@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<robot name="gz_ma2010" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find motoman_ma2010_support)/urdf/ma2010_macro.xacro" />
+    <xacro:motoman_ma2010 prefix=""/>
+    <link name="sphere">
+        <visual>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+          <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+        </inertial>
+    </link>
+    <joint name="base_link-sphere" type="fixed">
+        <origin xyz="1.0 0.0 0.5" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="sphere"/>
+    </joint>
+    
+    <gazebo>
+        <plugin filename="ignition-gazebo-joint-state-publisher-system" name="ignition::gazebo::systems::JointStatePublisher"/>
+    </gazebo>
+</robot>

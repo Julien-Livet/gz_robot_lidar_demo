@@ -1,0 +1,578 @@
+<?xml version="1.0" ?>
+<sdf version='1.11'>
+  <world name="default">
+      <!--physics name="bullet_physics" type="bullet">
+          <max_step_size>0.001</max_step_size>
+          <real_time_factor>1</real_time_factor>
+      </physics-->
+      <physics name="1ms" type="ignored">
+        <max_step_size>0.001</max_step_size>
+        <real_time_factor>1.0</real_time_factor>
+      </physics>
+      <plugin
+        filename="gz-sim-physics-system"
+        name="gz::sim::systems::Physics">
+      </plugin>
+      <plugin
+        filename="gz-sim-sensors-system"
+        name="gz::sim::systems::Sensors">
+        <render_engine>ogre2</render_engine>
+      </plugin>
+      <plugin
+        filename="gz-sim-scene-broadcaster-system"
+        name="gz::sim::systems::SceneBroadcaster">
+      </plugin>
+      <plugin
+        filename="gz-sim-user-commands-system"
+        name="gz::sim::systems::UserCommands">
+      </plugin>
+      <model name='gz_ma2010'>
+        <link name='base_link'>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='base_link_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/base_link.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <collision name='base_link_fixed_joint_lump__sphere_collision_1'>
+            <pose>1 0 0.5 0 0 0</pose>
+            <geometry>
+              <sphere>
+                <radius>0.050000000000000003</radius>
+              </sphere>
+            </geometry>
+          </collision>
+          <visual name='base_link_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/base_link.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+          <visual name='base_link_fixed_joint_lump__sphere_visual_1'>
+            <pose>1 0 0.5 0 0 0</pose>
+            <geometry>
+              <sphere>
+                <radius>0.050000000000000003</radius>
+              </sphere>
+            </geometry>
+          </visual>
+        </link>
+        <joint name='joint_1_s' type='revolute'>
+          <pose relative_to='base_link'>0 0 0.505 0 0 0</pose>
+          <parent>base_link</parent>
+          <child>link_1_s</child>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+              <lower>-3.1415999999999999</lower>
+              <upper>3.1415999999999999</upper>
+              <effort>3087</effort>
+              <velocity>3.4382999999999999</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_1_s'>
+          <pose relative_to='joint_1_s'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_1_s_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_1_s.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_1_s_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_1_s.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <joint name='joint_2_l' type='revolute'>
+          <pose relative_to='link_1_s'>0.14999999999999999 0 0 0 0 0</pose>
+          <parent>link_1_s</parent>
+          <child>link_2_l</child>
+          <axis>
+            <xyz>0 1 0</xyz>
+            <limit>
+              <lower>-1.8326</lower>
+              <upper>2.7052</upper>
+              <effort>2744</effort>
+              <velocity>3.3161</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_2_l'>
+          <pose relative_to='joint_2_l'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_2_l_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_2_l.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_2_l_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_2_l.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <joint name='joint_3_u' type='revolute'>
+          <pose relative_to='link_2_l'>0 0 0.76000000000000001 0 0 0</pose>
+          <parent>link_2_l</parent>
+          <child>link_3_u</child>
+          <axis>
+            <xyz>0 -1 0</xyz>
+            <limit>
+              <lower>-1.5008999999999999</lower>
+              <upper>2.7925</upper>
+              <effort>874.64999999999998</effort>
+              <velocity>3.6652</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_3_u'>
+          <pose relative_to='joint_3_u'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_3_u_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_3_u.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_3_u_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_3_u.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <joint name='joint_4_r' type='revolute'>
+          <pose relative_to='link_3_u'>0 0 0.20000000000000001 0 0 0</pose>
+          <parent>link_3_u</parent>
+          <child>link_4_r</child>
+          <axis>
+            <xyz>-1 0 0</xyz>
+            <limit>
+              <lower>-2.6179999999999999</lower>
+              <upper>2.6179999999999999</upper>
+              <effort>78.400000000000006</effort>
+              <velocity>7.1558000000000002</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_4_r'>
+          <pose relative_to='joint_4_r'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_4_r_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_4_r.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_4_r_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_4_r.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <joint name='joint_5_b' type='revolute'>
+          <pose relative_to='link_4_r'>1.0820000000000001 0 0 0 0 0</pose>
+          <parent>link_4_r</parent>
+          <child>link_5_b</child>
+          <axis>
+            <xyz>0 -1 0</xyz>
+            <limit>
+              <lower>-2.3561999999999999</lower>
+              <upper>1.5708</upper>
+              <effort>59.579999999999998</effort>
+              <velocity>7.1558000000000002</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_5_b'>
+          <pose relative_to='joint_5_b'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_5_b_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_5_b.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_5_b_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_5_b.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <joint name='joint_6_t' type='revolute'>
+          <pose relative_to='link_5_b'>0 0 0 0 0 0</pose>
+          <parent>link_5_b</parent>
+          <child>link_6_t</child>
+          <axis>
+            <xyz>-1 0 0</xyz>
+            <limit>
+              <lower>-3.6652</lower>
+              <upper>3.6652</upper>
+              <effort>29.600000000000001</effort>
+              <velocity>10.6465</velocity>
+            </limit>
+            <dynamics>
+              <spring_reference>0</spring_reference>
+              <spring_stiffness>0</spring_stiffness>
+              <damping>0.5</damping>
+            </dynamics>
+          </axis>
+        </joint>
+        <link name='link_6_t'>
+          <pose relative_to='joint_6_t'>0 0 0 0 0 0</pose>
+          <inertial>
+            <pose>0 0 0 0 0 0</pose>
+            <mass>0.1</mass>
+            <inertia>
+              <ixx>0.2</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>0.2</iyy>
+              <iyz>0</iyz>
+              <izz>0.1</izz>
+            </inertia>
+          </inertial>
+          <collision name='link_6_t_collision'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/collision/link_6_t.stl</uri>
+              </mesh>
+            </geometry>
+          </collision>
+          <visual name='link_6_t_visual'>
+            <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <scale>1 1 1</scale>
+                <uri>model://motoman_ma2010_support/meshes/ma2010/visual/link_6_t.stl</uri>
+              </mesh>
+            </geometry>
+            <material>
+              <diffuse>0.161764711 0.186274514 0.936274529 1</diffuse>
+              <ambient>0.161764711 0.186274514 0.936274529 1</ambient>
+            </material>
+          </visual>
+        </link>
+        <frame name='base_link-base' attached_to='base_link'>
+          <pose>0 0 0.505 0 0 0</pose>
+        </frame>
+        <frame name='base' attached_to='base_link-base'>
+          <pose>0 0 0 0 0 0</pose>
+        </frame>
+        <frame name='base_link-sphere' attached_to='base_link'>
+          <pose>1 0 0.5 0 0 0</pose>
+        </frame>
+        <frame name='sphere' attached_to='base_link-sphere'>
+          <pose>0 0 0 0 0 0</pose>
+        </frame>
+        <frame name='joint_6_t-tool0' attached_to='link_6_t'>
+          <pose>0.10000000000000001 0 0 0 0 0</pose>
+        </frame>
+        <frame name='tool0' attached_to='joint_6_t-tool0'>
+          <pose>0 0 0 0 0 0</pose>
+        </frame>
+        <joint name="base_link_world" type="fixed">
+          <parent>world</parent>
+          <child>base_link</child>
+        </joint>
+        <link name="profilo">
+            <pose relative_to='tool0'>0.05 0 0 0 0 0</pose>
+            <inertial>
+              <mass>0.1</mass>
+              <inertia>
+                <ixx>0.000166667</ixx>
+                <iyy>0.000166667</iyy>
+                <izz>0.000166667</izz>
+              </inertia>
+            </inertial>
+            <collision name="collision">
+              <geometry>
+                <box>
+                  <size>0.1 0.1 0.1</size>
+                </box>
+              </geometry>
+            </collision>
+            <visual name="visual">
+              <geometry>
+                <box>
+                  <size>0.1 0.1 0.1</size>
+                </box>
+              </geometry>
+            </visual>
+
+            <sensor name='gpu_lidar' type='gpu_lidar'>
+              <topic>profilo</topic>
+              <update_rate>10</update_rate>
+              <lidar>
+                <scan>
+                  <horizontal>
+                    <samples>640</samples>
+                    <resolution>1</resolution>
+                    <!--min_angle>-0.785398163397448</min_angle>
+                    <max_angle>0.785398163397448</max_angle-->
+                    <min_angle>-3.14</min_angle>
+                    <max_angle>3.14</max_angle>
+                  </horizontal>
+                  <vertical>
+                    <samples>16</samples>
+                    <resolution>1</resolution>
+                    <!--min_angle>0</min_angle>
+                    <max_angle>0</max_angle-->
+                    <min_angle>-0.1</min_angle>
+                    <max_angle>0.1</max_angle>
+                  </vertical>
+                </scan>
+                <range>
+                  <min>0.01</min>
+                  <max>2.0</max>
+                  <resolution>0.001</resolution>
+                </range>
+              </lidar>
+              <alwaysOn>1</alwaysOn>
+              <visualize>true</visualize>
+            </sensor>
+        </link>
+        <joint name="link_6_t-profilo" type="fixed">
+          <child>profilo</child>
+          <parent>link_6_t</parent>
+        </joint>
+        <plugin
+         filename="gz-sim-joint-trajectory-controller-system"
+         name="gz::sim::systems::JointTrajectoryController">
+         <joint_name>joint_1_s</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+         
+         <joint_name>joint_2_l</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+
+         <joint_name>joint_3_u</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+         
+         <joint_name>joint_4_r</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+         
+         <joint_name>joint_5_b</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+         
+         <joint_name>joint_6_t</joint_name>
+         <initial_position>0</initial_position>
+         <position_p_gain>100.0</position_p_gain>
+         <position_i_gain>0.5</position_i_gain>
+         <position_d_gain>5.0</position_d_gain>
+         <position_i_min>-10</position_i_min>
+         <position_i_max>10</position_i_max>
+         <position_cmd_min>-20</position_cmd_min>
+         <position_cmd_max>20</position_cmd_max>
+        </plugin>
+        <plugin
+            filename="ignition-gazebo-joint-state-publisher-system"
+            name="ignition::gazebo::systems::JointStatePublisher">
+        </plugin>
+
+        <plugin
+            filename="ignition-gazebo-pose-publisher-system"
+            name="ignition::gazebo::systems::PosePublisher">
+            <publish_link_pose>true</publish_link_pose>
+
+            <use_pose_vector_msg>true</use_pose_vector_msg>
+        </plugin>
+      </model>
+    </world>
+</sdf>
