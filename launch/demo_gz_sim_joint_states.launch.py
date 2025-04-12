@@ -8,14 +8,14 @@ from launch_ros.actions import Node
 import xacro
 
 def generate_launch_description():
-    pkg_calib_profilo = get_package_share_directory('calib_profilo')
+    pkg = get_package_share_directory('gz_robot_lidar_demo')
     
     # Launch gazebo
     gazebo = ExecuteProcess(
             cmd=[
                 'gz', 'sim --verbose -r',
                 os.path.join(
-                    pkg_calib_profilo,
+                    	pkg,
                     'urdf',
                     'gz_ma2010.sdf'
                 )
@@ -50,11 +50,11 @@ def generate_launch_description():
     rviz = Node(
             package='rviz2',
             executable='rviz2',
-            arguments=['-d', os.path.join(pkg_calib_profilo, 'rviz', 'gz_ma2010_joint_states.rviz')]
+            arguments=['-d', os.path.join(pkg, 'rviz', 'gz_ma2010_joint_states.rviz')]
         )
 
     # Parse robot description from xacro
-    robot_description_file = os.path.join(pkg_calib_profilo, 'urdf', 'gz_ma2010.xacro')
+    robot_description_file = os.path.join(pkg, 'urdf', 'gz_ma2010.xacro')
     robot_description_config = xacro.process_file(
         robot_description_file
     )

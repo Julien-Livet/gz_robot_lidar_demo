@@ -7,14 +7,14 @@ from launch.actions import ExecuteProcess, SetEnvironmentVariable
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    pkg_calib_profilo = get_package_share_directory('calib_profilo')
+    pkg = get_package_share_directory('gz_robot_lidar_demo')
     return LaunchDescription([
         # Launch gazebo
         ExecuteProcess(
             cmd=[
                 'gz', 'sim -r',
                 os.path.join(
-                    pkg_calib_profilo,
+                    pkg,
                     'urdf',
                     'gz_ma2010.sdf'
                 )
@@ -44,6 +44,6 @@ def generate_launch_description():
         Node(
             package='rviz2',
             executable='rviz2',
-            arguments=['-d', os.path.join(pkg_calib_profilo, 'rviz', 'gz_ma2010_tf_bridge.rviz')]
+            arguments=['-d', os.path.join(pkg, 'rviz', 'gz_ma2010_tf_bridge.rviz')]
         )
     ])
