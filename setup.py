@@ -26,7 +26,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gz_joint_state_publisher_gui = calib_profilo.gz_joint_state_publisher_gui:main'
+            'gz_joint_state_publisher_gui = gz_robot_lidar_demo.gz_joint_state_publisher_gui:main'
         ],
     },
 )
